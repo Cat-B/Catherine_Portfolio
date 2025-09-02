@@ -469,7 +469,12 @@ function ProjectDetail() {
                   <p className="text-gray-600 leading-relaxed text-lg">{project.mainBody}</p>
                 )}
 
-                {/* Old Portfolio Link Section */}
+
+            {/* Outcomes */}
+            <section>
+              <h2 className="text-2xl font-bold text-gray-900 mb-4">Outcomes & Learning</h2>
+              <p className="text-gray-600 leading-relaxed text-lg">{project.outcomes}</p>
+                              {/* Old Portfolio Link Section */}
                 {project.id === 6 && (
                   <div className="mt-6 p-4 bg-purple-50 rounded-lg">
                     <h4 className="font-semibold text-purple-800 mb-2">Previous Portfolio</h4>
@@ -490,11 +495,6 @@ function ProjectDetail() {
               </div>
             </section>
 
-            {/* Outcomes */}
-            <section>
-              <h2 className="text-2xl font-bold text-gray-900 mb-4">Outcomes & Learning</h2>
-              <p className="text-gray-600 leading-relaxed text-lg">{project.outcomes}</p>
-              
               {/* PDF Button for EE210 Karaoke project */}
               {project.id === 2 && project.pdfUrl && (
                 <div className="mt-6 p-4 bg-blue-50 rounded-lg">
