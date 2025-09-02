@@ -243,7 +243,7 @@ const projectsData = [
       "https://i.imgur.com/vCrxCPz.jpeg",
       "https://i.imgur.com/tpbEC7y.jpeg"
     ],
-    pdfUrl: "https://sites.google.com/view/cboss-hs-en/home"
+    pdfUrl: ""
   },
   /*
   {
