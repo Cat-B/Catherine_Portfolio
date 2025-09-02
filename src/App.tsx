@@ -492,7 +492,6 @@ function ProjectDetail() {
                     </a>
                   </div>
                 )}
-              </div>
             </section>
 
               {/* PDF Button for EE210 Karaoke project */}
