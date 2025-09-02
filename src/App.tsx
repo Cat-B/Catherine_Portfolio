@@ -468,6 +468,25 @@ function ProjectDetail() {
                 ) : (
                   <p className="text-gray-600 leading-relaxed text-lg">{project.mainBody}</p>
                 )}
+
+                {/* Old Portfolio Link Section */}
+                {project.id === 6 && (
+                  <div className="mt-6 p-4 bg-purple-50 rounded-lg">
+                    <h4 className="font-semibold text-purple-800 mb-2">Previous Portfolio</h4>
+                    <p className="text-purple-700 mb-3">
+                      View my previous portfolio website to see earlier projects and work.
+                    </p>
+                    <a
+                      href="https://catherineboss.github.io/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center px-4 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition-colors"
+                    >
+                      <ExternalLink className="w-4 h-4 mr-2" />
+                      Visit Old Portfolio
+                    </a>
+                  </div>
+                )}
               </div>
             </section>
 
