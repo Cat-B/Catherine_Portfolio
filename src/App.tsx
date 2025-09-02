@@ -479,7 +479,7 @@ function ProjectDetail() {
               {/* PDF Button for EE210 Karaoke project */}
               {project.id === 2 && project.pdfUrl && (
                 <div className="mt-6 p-4 bg-blue-50 rounded-lg">
-                  <h4 className="font-semibold text-gray-900 mb-2">Circuit Documentation</h4>
+                  <h4 className="font-semibold text-blue-800 mb-2">Resume</h4>
                   <p className="text-gray-600 mb-3">View the detailed circuit diagram and technical specifications.</p>
                   <a
                     href={project.pdfUrl}
