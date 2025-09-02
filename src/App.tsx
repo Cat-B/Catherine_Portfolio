@@ -243,7 +243,7 @@ const projectsData = [
       "https://i.imgur.com/vCrxCPz.jpeg",
       "https://i.imgur.com/tpbEC7y.jpeg"
     ],
-    pdfUrl: ""
+    pdfUrl: "https://sites.google.com/view/cboss-hs-en/home"
   },
   /*
   {
@@ -479,7 +479,7 @@ function ProjectDetail() {
               {/* PDF Button for EE210 Karaoke project */}
               {project.id === 2 && project.pdfUrl && (
                 <div className="mt-6 p-4 bg-blue-50 rounded-lg">
-                  <h4 className="font-semibold text-blue-800 mb-2">Resume</h4>
+                  <h4 className="font-semibold text-gray-900 mb-2">Circuit Documentation</h4>
                   <p className="text-gray-600 mb-3">View the detailed circuit diagram and technical specifications.</p>
                   <a
                     href={project.pdfUrl}
@@ -582,18 +582,6 @@ function ProjectDetail() {
                   </button>
                 ))}
               </div>
-              {project.oldPortfolioLink && (
-                <div className="mt-6 pt-4 border-t border-gray-200">
-                  <a 
-                    href={project.oldPortfolioLink}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-blue-600 hover:text-blue-800 font-medium transition-colors duration-200"
-                  >
-                    View my previous portfolio →
-                  </a>
-                </div>
-              )}
             </div>
           </div>
         </div>
