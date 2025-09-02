@@ -582,6 +582,18 @@ function ProjectDetail() {
                   </button>
                 ))}
               </div>
+              {project.oldPortfolioLink && (
+                <div className="mt-6 pt-4 border-t border-gray-200">
+                  <a 
+                    href={project.oldPortfolioLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-blue-600 hover:text-blue-800 font-medium transition-colors duration-200"
+                  >
+                    View my previous portfolio →
+                  </a>
+                </div>
+              )}
             </div>
           </div>
         </div>
