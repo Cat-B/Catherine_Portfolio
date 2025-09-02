@@ -226,6 +226,25 @@ const projectsData = [
       "https://i.imgur.com/RcIZIq9.png"
     ]
   },
+    {
+    id: 6,
+    title: "Student Portfolio Upgrade",
+    date: "Summer 2025",
+    shortDescription: "Using AI Programing tools, coding skills, .",
+    image: "https://i.imgur.com/YOzFYlx.png",
+    tech: ["TypeScript", "Website Development", "Coding","AI Integration","bolt.new"],
+    overview: "To showcase my engineering work in a professional way, I built my own portfolio website. The project began as an update to my old high school resume. My old portfolio was made in google sites and no longer felt representative of my skill level in college. While I had little prior web development experience, I used an AI-assisted coding platform to generate the base structure of the site, then gradually refined and expanded it. Over the course of about a month, I went from a template-driven beginner to someone much more confident navigating code, AI tools, and web publishing.",
+    mainBody: ["The process began with the AI platform, which helped me generate the initial framework of the site. This gave me a template to build on, since I wasn’t yet proficient enough in coding to design everything from scratch. On the baseline plan I had access to a very limited number of tokens, which forced me to dive into the raw code myself and save those tokens for when I was truly stuck. I migrated everything into GitHub and began manually editing and adjusting the site. This was slow and sometimes frustrating, but it gave me an accelerated learning curve by working off an existing base. I gradually became more comfortable making changes, fixing errors, and customizing the site to better fit my needs. Along the way, I picked up foundational skills in TypeScript and strengthened my ability to work with AI as a collaborative tool rather than a crutch.",
+              "Another important step was learning how to buy a custom domain and publish the site under it. That process gave me hands-on experience with web infrastructure and the practical side of making a site accessible to the public. To tie it all together, I also created a laser-engraved NFC business card linked directly to my website. While NFC tags are simple and easy to make, the card felt like a fun, modern touch that makes sharing my portfolio both practical and memorable."],
+    outcomes: "This project taught me far more than I expected going in. On the technical side, I gained confidence working with TypeScript, GitHub, and the basics of deploying a live website. I also saw firsthand how AI can accelerate learning when used thoughtfully, but that it can’t replace the need to understand and engage with the material yourself. Beyond the technical lessons, I walked away with a tangible, professional portfolio that reflects my growth as an engineer, and a set of skills that I know will be useful moving forward. More broadly, this project reinforced the importance of adaptability—especially as AI becomes a bigger part of the engineering world—and showed me the value of persistence when facing something outside my comfort zone.",
+    gallery: [
+      "https://i.imgur.com/YOzFYlx.png",
+      "https://i.imgur.com/t7uPOBw.png",
+      "https://i.imgur.com/vCrxCPz.jpeg",
+      "https://i.imgur.com/tpbEC7y.jpeg"
+    ],
+    pdfUrl: "https://sites.google.com/view/cboss-hs-en/home"
+  },
   /*
   {
     id: 6,
@@ -798,7 +817,7 @@ function Portfolio() {
             </div>
             <div>
               <h3 className="text-2xl font-semibold text-gray-900 mb-6">
-                Mechanical Engineer & Subheading Thing
+                Engineering With Purpose
               </h3>
               <p className="text-gray-600 mb-6 leading-relaxed">
                 I'm a third-year Mechanical Engineering student with a passion for problem-solving and hands-on design. What excites me most is taking things apart, improving them, and leaving them better than I found them. I enjoy working with people just as much as I enjoy digging into a project on my own, and I feel at home leading discussions or presenting in front of a crowd. No matter where I am, I try to bring kindness, energy, and a positive attitude. Ultimately, I want to explore a wide variety of engineering experiences that will help shape my future while keeping curiosity and fun at the center of everything I do.
@@ -963,103 +982,64 @@ function Portfolio() {
           <div className="grid md:grid-cols-2 gap-12">
             <div>
               <h3 className="text-2xl font-semibold text-gray-900 mb-6">Let's Connect</h3>
-              <div className="space-y-4">
-                <div className="flex items-center">
-                  <Mail className="text-blue-600 mr-4" size={20} />
-                  <span className="text-gray-600">catherineboss27@gmail.com</span>
-                </div>
-
-                <div className="flex items-center">
-                  <Linkedin className="text-blue-600 mr-4" size={20} />
-                  <a href="https://linkedin.com" className="text-gray-600 hover:text-blue-600 transition-colors duration-200">
-                    linkedin.com/in/catherineboss
-                  </a>
-                </div>
               </div>
-            </div>
+          </div>
 
-            <div>
-              <form onSubmit={handleSubmit} className="space-y-6">
-                <div>
-                  <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
-                    Name
-                  </label>
-                  <input
-                    type="text"
-                    id="name"
-                    name="name"
-                    value={formData.name}
-                    onChange={handleInputChange}
-                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-600 focus:border-transparent"
-                    placeholder="Your Name"
-                    required
-                  />
-                </div>
-                <div>
-                  <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
-                    Email
-                  </label>
-                  <input
-                    type="email"
-                    id="email"
-                    name="email"
-                    value={formData.email}
-                    onChange={handleInputChange}
-                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-600 focus:border-transparent"
-                    placeholder="your.email@example.com"
-                    required
-                  />
-                </div>
-                <div>
-                  <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-2">
-                    Message
-                  </label>
-                  <textarea
-                    id="message"
-                    name="message"
-                    value={formData.message}
-                    onChange={handleInputChange}
-                    rows={4}
-                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-600 focus:border-transparent"
-                    placeholder="Your message..."
-                    required
-                  />
-                </div>
-                
-                {submitMessage && (
-                  <div className={`p-4 rounded-lg ${
-                    submitMessage.includes('Thank you') 
-                      ? 'bg-green-50 text-green-800 border border-green-200' 
-                      : 'bg-red-50 text-red-800 border border-red-200'
-                  }`}>
-                    {submitMessage}
-                  </div>
-                )}
-                
-                <button
-                  type="submit"
-                  disabled={isSubmitting}
-                  className={`w-full py-3 px-6 rounded-lg transition-colors font-medium ${
-                    isSubmitting 
-                      ? 'bg-gray-400 text-gray-200 cursor-not-allowed' 
-                      : 'bg-blue-600 text-white hover:bg-blue-700'
-                  }`}
-                >
-                  {isSubmitting ? 'Sending...' : 'Send Message'}
-                </button>
-              </form>
+          <div className="max-w-2xl mx-auto">
+            <div className="grid sm:grid-cols-3 gap-6">
+              <a
+                href="mailto:catherineboss27@gmail.com"
+                className="flex flex-col items-center p-6 bg-white rounded-lg shadow-sm hover:shadow-md transition-all duration-200 border border-gray-100 hover:-translate-y-1"
+              >
+                <Mail className="w-8 h-8 text-blue-600 mb-3" />
+                <p className="font-medium text-gray-900 mb-1">Email</p>
+                <p className="text-gray-600 text-sm text-center">catherineboss27@gmail.com</p>
+              </a>
+              <a
+                href="https://linkedin.com/in/catherineboss"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex flex-col items-center p-6 bg-white rounded-lg shadow-sm hover:shadow-md transition-all duration-200 border border-gray-100 hover:-translate-y-1"
+              >
+                <Linkedin className="w-8 h-8 text-blue-600 mb-3" />
+                <p className="font-medium text-gray-900 mb-1">LinkedIn</p>
+                <p className="text-gray-600 text-sm text-center">Professional network</p>
+              </a>
+              <a
+                href="https://github.com/Cat-B"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex flex-col items-center p-6 bg-white rounded-lg shadow-sm hover:shadow-md transition-all duration-200 border border-gray-100 hover:-translate-y-1"
+              >
+                <Github className="w-8 h-8 text-blue-600 mb-3" />
+                <p className="font-medium text-gray-900 mb-1">GitHub</p>
+                <p className="text-gray-600 text-sm text-center">Code & projects</p>
+              </a>
             </div>
           </div>
         </div>
       </section>
 
       {/* Footer */}
-      <footer className="bg-gray-900 text-white py-8">
+      <footer className="bg-gray-900 text-white py-12">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
-            <p className="text-gray-400">
-              © 2024 Catherine Boss. All rights reserved.
-            </p>
+            <h3 className="text-2xl font-bold mb-4">Catherine Boss</h3>
+            <p className="text-gray-400 mb-6">Mechanical Engineering Student | Problem Solver | Future Engineer</p>
+            <div className="flex justify-center space-x-6">
+              <a href="mailto:catherineboss27@gmail.com" className="text-gray-400 hover:text-white transition-colors duration-200">
+                <Mail size={24} />
+              </a>
+              <a href="https://www.linkedin.com/in/catherine-boss-030207289/" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors duration-200">
+                <Linkedin size={24} />
+              </a>
+              <a href="https://github.com/catherineboss" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors duration-200">
+                <Github size={24} />
+              </a>
+            </div>
+            <div className="mt-8 pt-8 border-t border-gray-800">
+              <p className="text-gray-400">&copy; 2024 Catherine Boss. All rights reserved.</p>
+            </div>
           </div>
         </div>
       </footer>
@@ -1067,14 +1047,14 @@ function Portfolio() {
   );
 }
 
-// Main App Component with Router
+// App Component with Router
 function App() {
   return (
     <Router>
       <Routes>
         <Route path="/" element={<Portfolio />} />
-        <Route path="/project/:id" element={<ProjectDetail />} />
         <Route path="/projects" element={<ProjectsGallery />} />
+        <Route path="/project/:id" element={<ProjectDetail />} />
       </Routes>
     </Router>
   );
