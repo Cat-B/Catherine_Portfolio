@@ -234,9 +234,9 @@ const projectsData = [
     image: "https://i.imgur.com/YOzFYlx.png",
     tech: ["TypeScript", "Website Development", "Coding","AI Integration","bolt.new"],
     overview: "To showcase my engineering work in a professional way, I built my own portfolio website. The project began as an update to my old high school resume. My old portfolio was made in google sites and no longer felt representative of my skill level in college. While I had little prior web development experience, I used an AI-assisted coding platform to generate the base structure of the site, then gradually refined and expanded it. Over the course of about a month, I went from a template-driven beginner to someone much more confident navigating code, AI tools, and web publishing.",
-    mainBody: ["The process began with the AI platform, which helped me generate the initial framework of the site. This gave me a template to build on, since I wasn’t yet proficient enough in coding to design everything from scratch. On the baseline plan I had access to a very limited number of tokens, which forced me to dive into the raw code myself and save those tokens for when I was truly stuck. I migrated everything into GitHub and began manually editing and adjusting the site. This was slow and sometimes frustrating, but it gave me an accelerated learning curve by working off an existing base. I gradually became more comfortable making changes, fixing errors, and customizing the site to better fit my needs. Along the way, I picked up foundational skills in TypeScript and strengthened my ability to work with AI as a collaborative tool rather than a crutch.",
+    mainBody: ["The process began with the AI platform, which helped me generate the initial framework of the site. This gave me a template to build on, since I wasn't yet proficient enough in coding to design everything from scratch. On the baseline plan I had access to a very limited number of tokens, which forced me to dive into the raw code myself and save those tokens for when I was truly stuck. I migrated everything into GitHub and began manually editing and adjusting the site. This was slow and sometimes frustrating, but it gave me an accelerated learning curve by working off an existing base. I gradually became more comfortable making changes, fixing errors, and customizing the site to better fit my needs. Along the way, I picked up foundational skills in TypeScript and strengthened my ability to work with AI as a collaborative tool rather than a crutch.",
               "Another important step was learning how to buy a custom domain and publish the site under it. That process gave me hands-on experience with web infrastructure and the practical side of making a site accessible to the public. To tie it all together, I also created a laser-engraved NFC business card linked directly to my website. While NFC tags are simple and easy to make, the card felt like a fun, modern touch that makes sharing my portfolio both practical and memorable."],
-    outcomes: "This project taught me far more than I expected going in. On the technical side, I gained confidence working with TypeScript, GitHub, and the basics of deploying a live website. I also saw firsthand how AI can accelerate learning when used thoughtfully, but that it can’t replace the need to understand and engage with the material yourself. Beyond the technical lessons, I walked away with a tangible, professional portfolio that reflects my growth as an engineer, and a set of skills that I know will be useful moving forward. More broadly, this project reinforced the importance of adaptability—especially as AI becomes a bigger part of the engineering world—and showed me the value of persistence when facing something outside my comfort zone.",
+    outcomes: "This project taught me far more than I expected going in. On the technical side, I gained confidence working with TypeScript, GitHub, and the basics of deploying a live website. I also saw firsthand how AI can accelerate learning when used thoughtfully, but that it can't replace the need to understand and engage with the material yourself. Beyond the technical lessons, I walked away with a tangible, professional portfolio that reflects my growth as an engineer, and a set of skills that I know will be useful moving forward. More broadly, this project reinforced the importance of adaptability—especially as AI becomes a bigger part of the engineering world—and showed me the value of persistence when facing something outside my comfort zone.",
     gallery: [
       "https://i.imgur.com/YOzFYlx.png",
       "https://i.imgur.com/t7uPOBw.png",
@@ -468,7 +468,8 @@ function ProjectDetail() {
                 ) : (
                   <p className="text-gray-600 leading-relaxed text-lg">{project.mainBody}</p>
                 )}
-
+              </div>
+            </section>
 
             {/* Outcomes */}
             <section>
@@ -492,7 +493,6 @@ function ProjectDetail() {
                     </a>
                   </div>
                 )}
-            </section>
 
               {/* PDF Button for EE210 Karaoke project */}
               {project.id === 2 && project.pdfUrl && (
@@ -1000,7 +1000,7 @@ function Portfolio() {
           <div className="grid md:grid-cols-2 gap-12">
             <div>
               <h3 className="text-2xl font-semibold text-gray-900 mb-6">Let's Connect</h3>
-              </div>
+            </div>
           </div>
 
           <div className="max-w-2xl mx-auto">
