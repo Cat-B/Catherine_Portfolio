@@ -475,18 +475,18 @@ function ProjectDetail() {
             <section>
               <h2 className="text-2xl font-bold text-gray-900 mb-4">Outcomes & Learning</h2>
               <p className="text-gray-600 leading-relaxed text-lg">{project.outcomes}</p>
-                              {/* Old Portfolio Link Section */}
+            {/* Old Portfolio Link Section */}
                 {project.id === 6 && (
-                  <div className="mt-6 p-4 bg-purple-50 rounded-lg">
-                    <h4 className="font-semibold text-purple-800 mb-2">Previous Portfolio</h4>
-                    <p className="text-purple-700 mb-3">
+                  <div className="mt-6 p-4 bg-Blue-50 rounded-lg">
+                    <h4 className="font-semibold text-Blue-800 mb-2">Previous Portfolio</h4>
+                    <p className="text-Blue-700 mb-3">
                       View my previous portfolio website to see earlier projects and work.
                     </p>
                     <a
-                      href="https://catherineboss.github.io/"
+                      href="https://sites.google.com/view/cboss-hs-en/home"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center px-4 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition-colors"
+                      className="inline-flex items-center px-4 py-2 bg-Blue-600 text-white rounded-lg hover:bg-Blue-700 transition-colors"
                     >
                       <ExternalLink className="w-4 h-4 mr-2" />
                       Visit Old Portfolio
