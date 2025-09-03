@@ -483,7 +483,7 @@ function ProjectDetail() {
                       View my previous portfolio website to see earlier projects and work.
                     </p>
                     <button 
-                      onClick={() => window.open('https://catherineboss.github.io/', '_blank')}
+                      onClick={() => window.open('https://sites.google.com/view/cboss-hs-en/home', '_blank')}
                       className="inline-flex items-center px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
                     >
                       <ExternalLink className="w-4 h-4 mr-2" />
