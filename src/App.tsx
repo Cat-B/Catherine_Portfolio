@@ -49,66 +49,16 @@ const experienceData = [
 // Projects Gallery Component
 function ProjectsGallery() {
   const navigate = useNavigate();
-  const [showGoose, setShowGoose] = useState(true);
-  const [gooseClicks, setGooseClicks] = useState(0);
-  const [showHonk, setShowHonk] = useState(false);
 
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
-
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setShowGoose(false);
-    }, 3000);
-    return () => clearTimeout(timer);
-  }, []);
-
-  const handleGooseClick = () => {
-    setGooseClicks(prev => prev + 1);
-    setShowHonk(true);
-    setTimeout(() => setShowHonk(false), 1000);
-
-    if (gooseClicks >= 4) {
-      const honkSound = new Audio('data:audio/wav;base64,UklGRnoGAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YQoGAACBhYqFbF1fdJivrJBhNjVgodDbq2EcBj+a2/LDciUFLIHO8tiJNwgZaLvt559NEAxQp+PwtmMcBjiR1/LMeSwFJHfH8N2QQAoUXrTp66hVFApGn+DyvmwhBjOJ0/HPhzgJGGS67OihUhENTKXh8bllHAU2jdXxy30vByp+zPDaizsKEmC47O2kUxQMSaTi8L9oIgYzitTxzYg3CRhju+zpol0RDU2m4PG8aB8GM4nU8c2IOQkYY7vs6aJdEQ1NpuDxvWgfBjOJ1PHNiDkJGGO77OmiXRENTaXg8bxoHwYzidTxzYg5CRhju+zpol0RDU2l4PG8aB8GM4nU8c2IOQkYY7vs6aJdEQ1NpeDxvGgfBjOJ1PHNiDkJGGO77OmiXRENTaXg8bxoHwYzidTxzYg5CRhju+zpol0RDU2l4PG8aB8GM4nU8c2IOQkYY7vs6aJdEQ1NpeDxvGgfBjOJ1PHNiDkJGGO77OmiXRENTaXg8bxoHwYzidTxzYg5CRhju+zpol0RDU2l4PG8aB8GM4nU8c2IOQkYY7vs6aJdEQ1NpeDxvGgfBjOJ1PHNiDkJGGO77OmiXRENTaXg8bxoHwYzidTxzYg5CRhju+zpol0RDU2l4PG8aB8GM4nU8c2IOQkYY7vs6aJdEQ1NpeDxvGgfBjOJ1PHNiDkJGGO77OmiXRENTaXg8bxoHwYzidTxzYg5CRhju+zpol0RDU2l4PG8aB8GM4nU8c2IOQkYY7vs6aJdEQ1NpeDxvGgfBjOJ1PHNiDkJGGO77OmiXRENTaXg8bxoHwYzidTxzYg5CRhju+zpol0RDU2l4PG8aB8GM4nU8c2IOQkYY7vs6aJdEQ1NpeDxvGgfBjOJ1PHNiDkJGGO77OmiXRENTaXg8bxoHwYzidTxzYg5CRhju+zpol0RDU2l4PG8aB8GM4nU8c2IOQkYY7vs6aJdEQ1NpeDxvGgfBjOJ1PHNiDkJGGO77OmiXRE=');
-      honkSound.volume = 0.3;
-      honkSound.play().catch(() => {});
-      setGooseClicks(0);
-    }
-  };
 
   // Sort projects in reverse order by ID (newest first)
   const sortedProjects = [...projectsData].sort((a, b) => b.id - a.id);
 
   return (
     <div className="min-h-screen bg-white">
-      {/* Flying Goose Animation */}
-      {showGoose && (
-        <div className="fixed inset-0 pointer-events-none z-50 overflow-hidden">
-          <div className="goose-flight">
-            <span className="text-6xl">🦆</span>
-          </div>
-        </div>
-      )}
-
-      {/* Honk Notification */}
-      {showHonk && (
-        <div className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-50 pointer-events-none">
-          <div className="bg-amber-100 border-2 border-amber-400 text-amber-900 px-8 py-4 rounded-full text-2xl font-bold animate-bounce shadow-lg">
-            HONK! 🦆
-          </div>
-        </div>
-      )}
-
-      {/* Hidden Goose Easter Egg */}
-      <div
-        onClick={handleGooseClick}
-        className="fixed bottom-4 right-4 text-4xl cursor-pointer hover:scale-110 transition-transform duration-200 z-40"
-        title="Click me!"
-      >
-        🦆
-      </div>
-
       {/* Header */}
       <header className="bg-white shadow-sm border-b border-gray-100">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
@@ -138,7 +88,7 @@ function ProjectsGallery() {
             <Link
               key={project.id}
               to={`/project/${project.id}`}
-              className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 hover:rotate-1 cursor-pointer"
+              className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 cursor-pointer"
             >
               <img
                 src={project.image}
@@ -723,9 +673,6 @@ function Portfolio() {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitMessage, setSubmitMessage] = useState('');
-  const [showGoose, setShowGoose] = useState(true);
-  const [gooseClicks, setGooseClicks] = useState(0);
-  const [showHonk, setShowHonk] = useState(false);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -783,7 +730,7 @@ function Portfolio() {
         if (element) {
           const offsetTop = element.offsetTop;
           const offsetHeight = element.offsetHeight;
-
+          
           if (scrollPosition >= offsetTop && scrollPosition < offsetTop + offsetHeight) {
             setActiveSection(section);
             break;
@@ -796,55 +743,8 @@ function Portfolio() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setShowGoose(false);
-    }, 3000);
-    return () => clearTimeout(timer);
-  }, []);
-
-  const handleGooseClick = () => {
-    setGooseClicks(prev => prev + 1);
-    setShowHonk(true);
-    setTimeout(() => setShowHonk(false), 1000);
-
-    if (gooseClicks >= 4) {
-      const honkSound = new Audio('data:audio/wav;base64,UklGRnoGAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YQoGAACBhYqFbF1fdJivrJBhNjVgodDbq2EcBj+a2/LDciUFLIHO8tiJNwgZaLvt559NEAxQp+PwtmMcBjiR1/LMeSwFJHfH8N2QQAoUXrTp66hVFApGn+DyvmwhBjOJ0/HPhzgJGGS67OihUhENTKXh8bllHAU2jdXxy30vByp+zPDaizsKEmC47O2kUxQMSaTi8L9oIgYzitTxzYg3CRhju+zpol0RDU2m4PG8aB8GM4nU8c2IOQkYY7vs6aJdEQ1NpuDxvWgfBjOJ1PHNiDkJGGO77OmiXRENTaXg8bxoHwYzidTxzYg5CRhju+zpol0RDU2l4PG8aB8GM4nU8c2IOQkYY7vs6aJdEQ1NpeDxvGgfBjOJ1PHNiDkJGGO77OmiXRENTaXg8bxoHwYzidTxzYg5CRhju+zpol0RDU2l4PG8aB8GM4nU8c2IOQkYY7vs6aJdEQ1NpeDxvGgfBjOJ1PHNiDkJGGO77OmiXRENTaXg8bxoHwYzidTxzYg5CRhju+zpol0RDU2l4PG8aB8GM4nU8c2IOQkYY7vs6aJdEQ1NpeDxvGgfBjOJ1PHNiDkJGGO77OmiXRENTaXg8bxoHwYzidTxzYg5CRhju+zpol0RDU2l4PG8aB8GM4nU8c2IOQkYY7vs6aJdEQ1NpeDxvGgfBjOJ1PHNiDkJGGO77OmiXRENTaXg8bxoHwYzidTxzYg5CRhju+zpol0RDU2l4PG8aB8GM4nU8c2IOQkYY7vs6aJdEQ1NpeDxvGgfBjOJ1PHNiDkJGGO77OmiXRENTaXg8bxoHwYzidTxzYg5CRhju+zpol0RDU2l4PG8aB8GM4nU8c2IOQkYY7vs6aJdEQ1NpeDxvGgfBjOJ1PHNiDkJGGO77OmiXRE=');
-      honkSound.volume = 0.3;
-      honkSound.play().catch(() => {});
-      setGooseClicks(0);
-    }
-  };
-
   return (
     <div className="min-h-screen bg-white">
-      {/* Flying Goose Animation */}
-      {showGoose && (
-        <div className="fixed inset-0 pointer-events-none z-50 overflow-hidden">
-          <div className="goose-flight">
-            <span className="text-6xl">🦆</span>
-          </div>
-        </div>
-      )}
-
-      {/* Honk Notification */}
-      {showHonk && (
-        <div className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-50 pointer-events-none">
-          <div className="bg-amber-100 border-2 border-amber-400 text-amber-900 px-8 py-4 rounded-full text-2xl font-bold animate-bounce shadow-lg">
-            HONK! 🦆
-          </div>
-        </div>
-      )}
-
-      {/* Hidden Goose Easter Egg */}
-      <div
-        onClick={handleGooseClick}
-        className="fixed bottom-4 right-4 text-4xl cursor-pointer hover:scale-110 transition-transform duration-200 z-40"
-        title="Click me!"
-      >
-        🦆
-      </div>
-
       {/* Navigation */}
       <nav className="fixed top-0 left-0 right-0 bg-white/90 backdrop-blur-sm z-50 border-b border-gray-100">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -916,7 +816,7 @@ function Portfolio() {
               Available for Work
             </div>
             
-            <h1 className="text-5xl font-bold text-slate-900 mb-4 hover-wiggle">
+            <h1 className="text-5xl font-bold text-slate-900 mb-4">
               Catherine Boss
             </h1>
             
@@ -945,24 +845,24 @@ function Portfolio() {
             href="/cboss_Resume.pdf"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center justify-center px-6 py-3 bg-slate-800 text-white rounded-lg hover:bg-slate-900 transition-all duration-200 shadow-lg hover:shadow-xl hover:scale-105"
+            className="inline-flex items-center justify-center px-6 py-3 bg-slate-800 text-white rounded-lg hover:bg-slate-900 transition-all duration-200 shadow-lg hover:shadow-xl"
           >
             <FileText className="w-5 h-5 mr-2" />
             Most Recent Resume
           </a>
-
+          
           <a
             href="https://www.linkedin.com/in/catherine-boss-030207289/"
             target="_blank"
-            className="inline-flex items-center justify-center px-6 py-3 border-2 border-blue-200 text-slate-700 rounded-lg hover:bg-blue-50 hover:border-blue-300 transition-all duration-200 hover:scale-105"
+            className="inline-flex items-center justify-center px-6 py-3 border-2 border-blue-200 text-slate-700 rounded-lg hover:bg-blue-50 hover:border-blue-300 transition-all duration-200"
           >
             <ExternalLink className="w-5 h-5 mr-2" />
             LinkedIn
           </a>
-
+          
           <a
             href="mailto:CatherineBoss27@gmail.com"
-            className="inline-flex items-center justify-center px-6 py-3 border-2 border-blue-200 text-slate-700 rounded-lg hover:bg-blue-50 hover:border-blue-300 transition-all duration-200 hover:scale-105"
+            className="inline-flex items-center justify-center px-6 py-3 border-2 border-blue-200 text-slate-700 rounded-lg hover:bg-blue-50 hover:border-blue-300 transition-all duration-200"
           >
             <Mail className="w-5 h-5 mr-2" />
             Get in Contact
@@ -1045,7 +945,7 @@ function Portfolio() {
               <Link
                 key={project.id}
                 to={`/project/${project.id}`}
-                className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 hover:rotate-1 cursor-pointer"
+                className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 cursor-pointer"
               >
                 <img
                   src={project.image}
@@ -1086,7 +986,7 @@ function Portfolio() {
           <div className="text-center mt-12">
             <Link
               to="/projects"
-              className="inline-flex items-center px-8 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-1 hover:scale-105"
+              className="inline-flex items-center px-8 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
             >
               <span className="mr-2">See More Projects</span>
               <ExternalLink size={16} />
@@ -1164,7 +1064,7 @@ function Portfolio() {
             <div className="grid sm:grid-cols-3 gap-6">
               <a
                 href="mailto:catherineboss27@gmail.com"
-                className="flex flex-col items-center p-6 bg-white rounded-lg shadow-sm hover:shadow-md transition-all duration-200 border border-gray-100 hover:-translate-y-2 hover:scale-105"
+                className="flex flex-col items-center p-6 bg-white rounded-lg shadow-sm hover:shadow-md transition-all duration-200 border border-gray-100 hover:-translate-y-1"
               >
                 <Mail className="w-8 h-8 text-blue-600 mb-3" />
                 <p className="font-medium text-gray-900 mb-1">Email</p>
@@ -1174,7 +1074,7 @@ function Portfolio() {
                 href="https://linkedin.com/in/catherineboss"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex flex-col items-center p-6 bg-white rounded-lg shadow-sm hover:shadow-md transition-all duration-200 border border-gray-100 hover:-translate-y-2 hover:scale-105"
+                className="flex flex-col items-center p-6 bg-white rounded-lg shadow-sm hover:shadow-md transition-all duration-200 border border-gray-100 hover:-translate-y-1"
               >
                 <Linkedin className="w-8 h-8 text-blue-600 mb-3" />
                 <p className="font-medium text-gray-900 mb-1">LinkedIn</p>
@@ -1184,7 +1084,7 @@ function Portfolio() {
                 href="https://github.com/Cat-B"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex flex-col items-center p-6 bg-white rounded-lg shadow-sm hover:shadow-md transition-all duration-200 border border-gray-100 hover:-translate-y-2 hover:scale-105"
+                className="flex flex-col items-center p-6 bg-white rounded-lg shadow-sm hover:shadow-md transition-all duration-200 border border-gray-100 hover:-translate-y-1"
               >
                 <Github className="w-8 h-8 text-blue-600 mb-3" />
                 <p className="font-medium text-gray-900 mb-1">GitHub</p>
