@@ -6,6 +6,14 @@ import { Menu, X, Github, Linkedin, Mail, ExternalLink, ChevronDown, ArrowLeft, 
 const experienceData = [
   {
     id: 1,
+    title: "Research & Development Intern",
+    company: "The Applied Research Laboratory at Penn State",
+    location: "State College, PA",
+    duration: "October 2025 - Present",
+    description: "As an R&D Engineering Intern I learned FPV drone fabrication and operation with preparation for FAA Part 107 certification, was selected as a Pipeline Student, and hold an active security clearance",
+  },
+  {
+    id: 2,
     title: "Mechanical Engineering Intern",
     company: "Communications & Power Industries",
     location: "State College, PA",
@@ -13,7 +21,7 @@ const experienceData = [
     description: "In this role, I designed components for manufacturability, supported satellite systems, and integrated mechanical and electronic knowledge. My work included SolidWorks modeling and simulation, detailed documentation, and backend tasks like BOM management and documentation.",
   },
   {
-    id: 2,
+    id: 3,
     title: "Student Trainee",
     company: "The Naval Undersea Warfare Center (NUWC)",
     location: "Newport, RI",
@@ -21,7 +29,7 @@ const experienceData = [
     description: "In this role, I updated legacy designs into detailed 3D models and drawings, developed and critiqued assembly guides for technician use, and collaborated with electrical engineers to deliver cross-disciplinary solutions.",
   },
     {
-    id: 3,
+    id: 4,
     title: "Drone Crew Member",
     company: "Sky Elements Drone Shows",
     location: "Dallas, TX",
@@ -29,7 +37,7 @@ const experienceData = [
     description: "As a drone crew member, I maintained and prepared UAVs for live shows, ensured safe operation of hazardous equipment, and arranged preparatory formations—an experience that sparked my passion for drone technology..",
   },
       {
-    id: 4,
+    id: 5,
     title: "Pyrotechnic Assistant",
     company: "Flambeaux Fireworks",
     location: "Texas",
@@ -41,13 +49,66 @@ const experienceData = [
 // Projects Gallery Component
 function ProjectsGallery() {
   const navigate = useNavigate();
+  const [showGoose, setShowGoose] = useState(true);
+  const [gooseClicks, setGooseClicks] = useState(0);
+  const [showHonk, setShowHonk] = useState(false);
 
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
 
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setShowGoose(false);
+    }, 3000);
+    return () => clearTimeout(timer);
+  }, []);
+
+  const handleGooseClick = () => {
+    setGooseClicks(prev => prev + 1);
+    setShowHonk(true);
+    setTimeout(() => setShowHonk(false), 1000);
+
+    if (gooseClicks >= 4) {
+      const honkSound = new Audio('data:audio/wav;base64,UklGRnoGAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YQoGAACBhYqFbF1fdJivrJBhNjVgodDbq2EcBj+a2/LDciUFLIHO8tiJNwgZaLvt559NEAxQp+PwtmMcBjiR1/LMeSwFJHfH8N2QQAoUXrTp66hVFApGn+DyvmwhBjOJ0/HPhzgJGGS67OihUhENTKXh8bllHAU2jdXxy30vByp+zPDaizsKEmC47O2kUxQMSaTi8L9oIgYzitTxzYg3CRhju+zpol0RDU2m4PG8aB8GM4nU8c2IOQkYY7vs6aJdEQ1NpuDxvWgfBjOJ1PHNiDkJGGO77OmiXRENTaXg8bxoHwYzidTxzYg5CRhju+zpol0RDU2l4PG8aB8GM4nU8c2IOQkYY7vs6aJdEQ1NpeDxvGgfBjOJ1PHNiDkJGGO77OmiXRENTaXg8bxoHwYzidTxzYg5CRhju+zpol0RDU2l4PG8aB8GM4nU8c2IOQkYY7vs6aJdEQ1NpeDxvGgfBjOJ1PHNiDkJGGO77OmiXRENTaXg8bxoHwYzidTxzYg5CRhju+zpol0RDU2l4PG8aB8GM4nU8c2IOQkYY7vs6aJdEQ1NpeDxvGgfBjOJ1PHNiDkJGGO77OmiXRENTaXg8bxoHwYzidTxzYg5CRhju+zpol0RDU2l4PG8aB8GM4nU8c2IOQkYY7vs6aJdEQ1NpeDxvGgfBjOJ1PHNiDkJGGO77OmiXRENTaXg8bxoHwYzidTxzYg5CRhju+zpol0RDU2l4PG8aB8GM4nU8c2IOQkYY7vs6aJdEQ1NpeDxvGgfBjOJ1PHNiDkJGGO77OmiXRENTaXg8bxoHwYzidTxzYg5CRhju+zpol0RDU2l4PG8aB8GM4nU8c2IOQkYY7vs6aJdEQ1NpeDxvGgfBjOJ1PHNiDkJGGO77OmiXRENTaXg8bxoHwYzidTxzYg5CRhju+zpol0RDU2l4PG8aB8GM4nU8c2IOQkYY7vs6aJdEQ1NpeDxvGgfBjOJ1PHNiDkJGGO77OmiXRE=');
+      honkSound.volume = 0.3;
+      honkSound.play().catch(() => {});
+      setGooseClicks(0);
+    }
+  };
+
+  // Sort projects in reverse order by ID (newest first)
+  const sortedProjects = [...projectsData].sort((a, b) => b.id - a.id);
+
   return (
     <div className="min-h-screen bg-white">
+      {/* Flying Goose Animation */}
+      {showGoose && (
+        <div className="fixed inset-0 pointer-events-none z-50 overflow-hidden">
+          <div className="goose-flight">
+            <span className="text-6xl">🦆</span>
+          </div>
+        </div>
+      )}
+
+      {/* Honk Notification */}
+      {showHonk && (
+        <div className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-50 pointer-events-none">
+          <div className="bg-amber-100 border-2 border-amber-400 text-amber-900 px-8 py-4 rounded-full text-2xl font-bold animate-bounce shadow-lg">
+            HONK! 🦆
+          </div>
+        </div>
+      )}
+
+      {/* Hidden Goose Easter Egg */}
+      <div
+        onClick={handleGooseClick}
+        className="fixed bottom-4 right-4 text-4xl cursor-pointer hover:scale-110 transition-transform duration-200 z-40"
+        title="Click me!"
+      >
+        🦆
+      </div>
+
       {/* Header */}
       <header className="bg-white shadow-sm border-b border-gray-100">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
@@ -73,11 +134,11 @@ function ProjectsGallery() {
         </div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {projectsData.map((project) => (
+          {sortedProjects.map((project) => (
             <Link
               key={project.id}
               to={`/project/${project.id}`}
-              className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 cursor-pointer"
+              className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 hover:rotate-1 cursor-pointer"
             >
               <img
                 src={project.image}
@@ -121,7 +182,7 @@ function ProjectsGallery() {
 // Project data
 const projectsData = [
   {
-    id: 1,
+    id: 5,
     title: "Gingerbread Greenhouse Dream",
     date: "Fall 2022",
     shortDescription: "Designed and built a complex edible greenhouse with sloped roofs, gelatin windows, and integrated lights with christmas themed interior.",
@@ -145,7 +206,7 @@ const projectsData = [
     ]
   },
   {
-    id: 2,
+    id: 35,
     title: "EE210 Karaoke Machine",
     date: "Summer 2025",
     shortDescription: "Designed, prototyped, and soldered a five‑block op‑amp karaoke machine with tone, volume, and LED display.",
@@ -162,10 +223,10 @@ const projectsData = [
       "https://i.imgur.com/Z0wNYsV.jpeg",
       "https://i.imgur.com/Nm1VEUC.jpeg"
     ],
-    pdfUrl: "/KaraokeFinal.pdf"
+    pdfUrl: "/karaoke_final.pdf"
   },
   {
-    id: 3,
+    id: 25,
     title: "ASME Hovercraft Project",
     date: "Spring 2025",
     shortDescription: "Contributed to a winning team hovercraft through fabrication, design file management, and final competition prep.",
@@ -186,7 +247,8 @@ const projectsData = [
     ],
   },
   {
-    id: 4,
+    id: 20,
+    /*remember to change the gallery number too line 500ish */
     title: "ELSA-d LEO Engineering Presentation",
     date: "Fall 2024",
     shortDescription: "Presented a professional, research‑driven talk on ELSA‑d satellite retrieval and the orbital debris problem.",
@@ -207,7 +269,7 @@ const projectsData = [
     pdfUrl: "/elsa-d-presentation.pdf"
   },
   {
-    id: 5,
+    id: 15,
     title: "3D Printed Penny Boats",
     date: "Fall 2023/24",
     shortDescription: "Designed and 3D printed two competition-winning penny boats that balanced buoyancy, creativity, and sustainability while doubling as everyday organizers.",
@@ -227,7 +289,7 @@ const projectsData = [
     ]
   },
     {
-    id: 6,
+    id: 30,
     title: "Student Portfolio Upgrade",
     date: "Summer 2025",
     shortDescription: "Using AI Programing tools, coding skills, .",
@@ -244,6 +306,28 @@ const projectsData = [
       "https://i.imgur.com/tpbEC7y.jpeg"
     ],
     pdfUrl: "https://sites.google.com/view/cboss-hs-en/home"
+  },
+   {
+     /*remember to change the gallery number too line 500ish */
+    id: 40,
+    title: "Matlab Presentation",
+    date: "October 2025",
+    shortDescription: "Beep Boop",
+    image: "https://i.imgur.com/99CDz4C.png",
+    tech: ["Tech Talk", "Public Speaking", "Professional Communication","AI Integration","Technical Presentation","MATLAB"],
+    overview: "As the Dual Secretary for the Penn State chapter of ASME, I work closely with both the executive board and multiple design teams to support technical engagement within the organization. Early in the semester, I delivered a large-scale technical presentation focused on MATLAB, a tool that many undergraduate engineers approach with hesitation or frustration. My goal was to reframe MATLAB as an accessible, powerful engineering resource when used correctly, and to demonstrate its relevance across coursework, design teams, and real-world engineering applications.",
+    mainBody: [ "This presentation took place during the second week of classes at one of our early design team meetings and was attended by roughly 100 ASME members, ranging from first-year students to seniors. I spent a significant amount of time preparing custom MATLAB scripts, slides, and demonstrations designed to meet students at different experience levels. Rather than assuming prior comfort with the software, I focused on fundamentals, clarity, and practical use cases, emphasizing that many frustrations stem from how MATLAB is introduced rather than from the tool itself.",
+        "To make the talk concrete and engaging, I built live demonstrations drawing from thermodynamics, vibrations, and data visualization. These examples reflected coursework I was actively using MATLAB for, particularly in my junior-year vibrations class, and showcased how the software can streamline problem-solving and enhance understanding. I also discussed how MATLAB concepts translate cleanly into other programming languages and how it can interface with hardware platforms such as Raspberry Pi and Arduino, broadening its usefulness beyond purely academic settings.",
+        "A key section of the presentation addressed the responsible use of AI in programming. I emphasized using AI as a learning aid rather than a replacement for understanding, showing how it can support debugging, exploration, and efficiency without undermining engineering intuition or problem-solving skills. Throughout the process, I coordinated with ASME leadership and design team leads, balancing stakeholder input while maintaining clear boundaries so the presentation remained focused, cohesive, and true to my original intent. The result was one of the most well-attended Tech Talks hosted by an ASME member that semester."]
+    ,
+    outcomes: "This project strengthened my ability to plan and deliver a large technical talk to a diverse audience while maintaining confidence and clarity. I gained experience communicating with multiple stakeholders, defending my technical perspective professionally, and presenting content I genuinely care about. I also deepened my own understanding of MATLAB and emerging AI-assisted workflows, which made the project both educational and enjoyable. Most importantly, the experience reinforced the value of advocacy for good tools and good practices (especially when they are misunderstood),and showed me how thoughtful communication can shift perspectives and encourage growth within an engineering community.",
+   gallery: [
+      "https://images.pexels.com/photos/196644/pexels-photo-196644.jpeg?auto=compress&cs=tinysrgb&w=800",
+      "https://images.pexels.com/photos/442587/pexels-photo-442587.jpeg?auto=compress&cs=tinysrgb&w=800",
+      "https://images.pexels.com/photos/3862130/pexels-photo-3862130.jpeg?auto=compress&cs=tinysrgb&w=800",
+      "https://images.pexels.com/photos/1034662/pexels-photo-1034662.jpeg?auto=compress&cs=tinysrgb&w=800"
+    ],
+    pdfUrl: "/matlab_talk.pdf"
   },
   /*
   {
@@ -295,6 +379,7 @@ function ProjectDetail() {
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [isModalOpen, project]);
+  
   if (!project) {
     return (
       <div className="min-h-screen flex items-center justify-center">
@@ -373,7 +458,7 @@ function ProjectDetail() {
 
         {/* Photo Gallery */}
         {/* Photo Gallery or PDF Display */}
-        {project.id === 4 ? (
+        {project.id === 20 ? (
           // PDF Preview for ELSA-d project
           <div className="mb-12">
             <h2 className="text-2xl font-bold text-gray-900 mb-6">Presentation Preview</h2>
@@ -390,7 +475,26 @@ function ProjectDetail() {
             </div>
           </div>
         ) : (
-          // Regular Photo Gallery for other projects
+          <>
+            {/* Photo Gallery or PDF Display */}
+            {project.id === 40 ? (
+          /* PDF Preview for Matlab project */
+          <div className="mb-12">
+            <h2 className="text-2xl font-bold text-gray-900 mb-6">Presentation Preview</h2>
+            <div className="bg-gray-100 rounded-lg overflow-hidden shadow-lg">
+              <iframe
+                src={project.pdfUrl}
+                className="w-full h-96"
+                title="MATLAB Tutorial Technical Presentation"
+              />
+              <div className="p-4 bg-white">
+                <h3 className="text-lg font-semibold text-gray-900 mb-2">MATLAB Tutorial Technical Presentation</h3>
+                <p className="text-gray-600">Complete technical presentation on MATLAB uses for undergraduate mechanical engineers.</p>
+              </div>
+            </div>
+          </div>
+        ) : (
+          /* Regular Photo Gallery for other projects*/
           <div className="mb-12">
             <h2 className="text-2xl font-bold text-gray-900 mb-6">Project Gallery</h2>
             <div className="relative">
@@ -445,6 +549,8 @@ function ProjectDetail() {
             </div>
           </div>
         )}
+        </>
+        )}
 
         {/* Project Content */}
         <div className="grid lg:grid-cols-3 gap-12">
@@ -476,7 +582,7 @@ function ProjectDetail() {
               <h2 className="text-2xl font-bold text-gray-900 mb-4">Outcomes & Learning</h2>
               <p className="text-gray-600 leading-relaxed text-lg">{project.outcomes}</p>
             {/* Old Portfolio Link Section */}
-                {project.id === 6 && (
+                {project.id === 30 && (
                   <div className="mt-6 p-4 bg-blue-50 rounded-lg">
                     <h4 className="font-semibold text-blue-800 mb-2">Previous Portfolio</h4>
                     <p className="text-blue-700 mb-3">
@@ -493,7 +599,7 @@ function ProjectDetail() {
                 )}
 
               {/* PDF Button for EE210 Karaoke project */}
-              {project.id === 2 && project.pdfUrl && (
+              {project.id === 35 && project.pdfUrl && (
                 <div className="mt-6 p-4 bg-blue-50 rounded-lg">
                   <h4 className="font-semibold text-gray-900 mb-2">Circuit Documentation</h4>
                   <p className="text-gray-600 mb-3">View the detailed circuit diagram and technical specifications.</p>
@@ -617,6 +723,9 @@ function Portfolio() {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitMessage, setSubmitMessage] = useState('');
+  const [showGoose, setShowGoose] = useState(true);
+  const [gooseClicks, setGooseClicks] = useState(0);
+  const [showHonk, setShowHonk] = useState(false);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -674,7 +783,7 @@ function Portfolio() {
         if (element) {
           const offsetTop = element.offsetTop;
           const offsetHeight = element.offsetHeight;
-          
+
           if (scrollPosition >= offsetTop && scrollPosition < offsetTop + offsetHeight) {
             setActiveSection(section);
             break;
@@ -687,8 +796,55 @@ function Portfolio() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setShowGoose(false);
+    }, 3000);
+    return () => clearTimeout(timer);
+  }, []);
+
+  const handleGooseClick = () => {
+    setGooseClicks(prev => prev + 1);
+    setShowHonk(true);
+    setTimeout(() => setShowHonk(false), 1000);
+
+    if (gooseClicks >= 4) {
+      const honkSound = new Audio('data:audio/wav;base64,UklGRnoGAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YQoGAACBhYqFbF1fdJivrJBhNjVgodDbq2EcBj+a2/LDciUFLIHO8tiJNwgZaLvt559NEAxQp+PwtmMcBjiR1/LMeSwFJHfH8N2QQAoUXrTp66hVFApGn+DyvmwhBjOJ0/HPhzgJGGS67OihUhENTKXh8bllHAU2jdXxy30vByp+zPDaizsKEmC47O2kUxQMSaTi8L9oIgYzitTxzYg3CRhju+zpol0RDU2m4PG8aB8GM4nU8c2IOQkYY7vs6aJdEQ1NpuDxvWgfBjOJ1PHNiDkJGGO77OmiXRENTaXg8bxoHwYzidTxzYg5CRhju+zpol0RDU2l4PG8aB8GM4nU8c2IOQkYY7vs6aJdEQ1NpeDxvGgfBjOJ1PHNiDkJGGO77OmiXRENTaXg8bxoHwYzidTxzYg5CRhju+zpol0RDU2l4PG8aB8GM4nU8c2IOQkYY7vs6aJdEQ1NpeDxvGgfBjOJ1PHNiDkJGGO77OmiXRENTaXg8bxoHwYzidTxzYg5CRhju+zpol0RDU2l4PG8aB8GM4nU8c2IOQkYY7vs6aJdEQ1NpeDxvGgfBjOJ1PHNiDkJGGO77OmiXRENTaXg8bxoHwYzidTxzYg5CRhju+zpol0RDU2l4PG8aB8GM4nU8c2IOQkYY7vs6aJdEQ1NpeDxvGgfBjOJ1PHNiDkJGGO77OmiXRENTaXg8bxoHwYzidTxzYg5CRhju+zpol0RDU2l4PG8aB8GM4nU8c2IOQkYY7vs6aJdEQ1NpeDxvGgfBjOJ1PHNiDkJGGO77OmiXRENTaXg8bxoHwYzidTxzYg5CRhju+zpol0RDU2l4PG8aB8GM4nU8c2IOQkYY7vs6aJdEQ1NpeDxvGgfBjOJ1PHNiDkJGGO77OmiXRE=');
+      honkSound.volume = 0.3;
+      honkSound.play().catch(() => {});
+      setGooseClicks(0);
+    }
+  };
+
   return (
     <div className="min-h-screen bg-white">
+      {/* Flying Goose Animation */}
+      {showGoose && (
+        <div className="fixed inset-0 pointer-events-none z-50 overflow-hidden">
+          <div className="goose-flight">
+            <span className="text-6xl">🦆</span>
+          </div>
+        </div>
+      )}
+
+      {/* Honk Notification */}
+      {showHonk && (
+        <div className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-50 pointer-events-none">
+          <div className="bg-amber-100 border-2 border-amber-400 text-amber-900 px-8 py-4 rounded-full text-2xl font-bold animate-bounce shadow-lg">
+            HONK! 🦆
+          </div>
+        </div>
+      )}
+
+      {/* Hidden Goose Easter Egg */}
+      <div
+        onClick={handleGooseClick}
+        className="fixed bottom-4 right-4 text-4xl cursor-pointer hover:scale-110 transition-transform duration-200 z-40"
+        title="Click me!"
+      >
+        🦆
+      </div>
+
       {/* Navigation */}
       <nav className="fixed top-0 left-0 right-0 bg-white/90 backdrop-blur-sm z-50 border-b border-gray-100">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -760,7 +916,7 @@ function Portfolio() {
               Available for Work
             </div>
             
-            <h1 className="text-5xl font-bold text-slate-900 mb-4">
+            <h1 className="text-5xl font-bold text-slate-900 mb-4 hover-wiggle">
               Catherine Boss
             </h1>
             
@@ -786,27 +942,27 @@ function Portfolio() {
         {/* Contact Links */}
         <div className="flex flex-col sm:flex-row justify-center lg:justify-start gap-4 sm:gap-6">
           <a
-            href="/ResumeAUG25.pdf"
+            href="/cboss_Resume.pdf"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center justify-center px-6 py-3 bg-slate-800 text-white rounded-lg hover:bg-slate-900 transition-all duration-200 shadow-lg hover:shadow-xl"
+            className="inline-flex items-center justify-center px-6 py-3 bg-slate-800 text-white rounded-lg hover:bg-slate-900 transition-all duration-200 shadow-lg hover:shadow-xl hover:scale-105"
           >
             <FileText className="w-5 h-5 mr-2" />
             Most Recent Resume
           </a>
-          
+
           <a
             href="https://www.linkedin.com/in/catherine-boss-030207289/"
             target="_blank"
-            className="inline-flex items-center justify-center px-6 py-3 border-2 border-blue-200 text-slate-700 rounded-lg hover:bg-blue-50 hover:border-blue-300 transition-all duration-200"
+            className="inline-flex items-center justify-center px-6 py-3 border-2 border-blue-200 text-slate-700 rounded-lg hover:bg-blue-50 hover:border-blue-300 transition-all duration-200 hover:scale-105"
           >
             <ExternalLink className="w-5 h-5 mr-2" />
             LinkedIn
           </a>
-          
+
           <a
             href="mailto:CatherineBoss27@gmail.com"
-            className="inline-flex items-center justify-center px-6 py-3 border-2 border-blue-200 text-slate-700 rounded-lg hover:bg-blue-50 hover:border-blue-300 transition-all duration-200"
+            className="inline-flex items-center justify-center px-6 py-3 border-2 border-blue-200 text-slate-700 rounded-lg hover:bg-blue-50 hover:border-blue-300 transition-all duration-200 hover:scale-105"
           >
             <Mail className="w-5 h-5 mr-2" />
             Get in Contact
@@ -880,13 +1036,16 @@ function Portfolio() {
               creative problem solving, and technical skills.
             </p>
           </div>
-
+          {/* use this to update featured projects */}
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {projectsData.slice(0, 3).map((project) => (
+{[40, 35, 25]
+  .map(id => projectsData.find(project => project.id === id))
+  .filter(Boolean)
+  .map((project) => (
               <Link
                 key={project.id}
                 to={`/project/${project.id}`}
-                className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 cursor-pointer"
+                className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 hover:rotate-1 cursor-pointer"
               >
                 <img
                   src={project.image}
@@ -927,7 +1086,7 @@ function Portfolio() {
           <div className="text-center mt-12">
             <Link
               to="/projects"
-              className="inline-flex items-center px-8 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
+              className="inline-flex items-center px-8 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-1 hover:scale-105"
             >
               <span className="mr-2">See More Projects</span>
               <ExternalLink size={16} />
@@ -1005,7 +1164,7 @@ function Portfolio() {
             <div className="grid sm:grid-cols-3 gap-6">
               <a
                 href="mailto:catherineboss27@gmail.com"
-                className="flex flex-col items-center p-6 bg-white rounded-lg shadow-sm hover:shadow-md transition-all duration-200 border border-gray-100 hover:-translate-y-1"
+                className="flex flex-col items-center p-6 bg-white rounded-lg shadow-sm hover:shadow-md transition-all duration-200 border border-gray-100 hover:-translate-y-2 hover:scale-105"
               >
                 <Mail className="w-8 h-8 text-blue-600 mb-3" />
                 <p className="font-medium text-gray-900 mb-1">Email</p>
@@ -1015,7 +1174,7 @@ function Portfolio() {
                 href="https://linkedin.com/in/catherineboss"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex flex-col items-center p-6 bg-white rounded-lg shadow-sm hover:shadow-md transition-all duration-200 border border-gray-100 hover:-translate-y-1"
+                className="flex flex-col items-center p-6 bg-white rounded-lg shadow-sm hover:shadow-md transition-all duration-200 border border-gray-100 hover:-translate-y-2 hover:scale-105"
               >
                 <Linkedin className="w-8 h-8 text-blue-600 mb-3" />
                 <p className="font-medium text-gray-900 mb-1">LinkedIn</p>
@@ -1025,7 +1184,7 @@ function Portfolio() {
                 href="https://github.com/Cat-B"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex flex-col items-center p-6 bg-white rounded-lg shadow-sm hover:shadow-md transition-all duration-200 border border-gray-100 hover:-translate-y-1"
+                className="flex flex-col items-center p-6 bg-white rounded-lg shadow-sm hover:shadow-md transition-all duration-200 border border-gray-100 hover:-translate-y-2 hover:scale-105"
               >
                 <Github className="w-8 h-8 text-blue-600 mb-3" />
                 <p className="font-medium text-gray-900 mb-1">GitHub</p>
