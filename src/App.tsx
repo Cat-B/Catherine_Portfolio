@@ -262,7 +262,7 @@ const projectsData = [
     id: 40,
     title: "Matlab Presentation",
     date: "October 2025",
-    shortDescription: "Beep Boop",
+    shortDescription: "ASME Tech Talk on the Utility of MATLAB",
     image: "https://i.imgur.com/99CDz4C.png",
     tech: ["Tech Talk", "Public Speaking", "Professional Communication","AI Integration","Technical Presentation","MATLAB"],
     overview: "As the Dual Secretary for the Penn State chapter of ASME, I work closely with both the executive board and multiple design teams to support technical engagement within the organization. Early in the semester, I delivered a large-scale technical presentation focused on MATLAB, a tool that many undergraduate engineers approach with hesitation or frustration. My goal was to reframe MATLAB as an accessible, powerful engineering resource when used correctly, and to demonstrate its relevance across coursework, design teams, and real-world engineering applications.",
