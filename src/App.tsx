@@ -861,7 +861,7 @@ function Portfolio() {
           </a>
           
           <a
-            href="mailto:CatherineBoss27@gmail.com"
+            href="mailto:jcb6560@psu.edu"
             className="inline-flex items-center justify-center px-6 py-3 border-2 border-blue-200 text-slate-700 rounded-lg hover:bg-blue-50 hover:border-blue-300 transition-all duration-200"
           >
             <Mail className="w-5 h-5 mr-2" />
@@ -1063,12 +1063,12 @@ function Portfolio() {
           <div className="max-w-2xl mx-auto">
             <div className="grid sm:grid-cols-3 gap-6">
               <a
-                href="mailto:catherineboss27@gmail.com"
+                href="mailto:jcb6560@psu.edu"
                 className="flex flex-col items-center p-6 bg-white rounded-lg shadow-sm hover:shadow-md transition-all duration-200 border border-gray-100 hover:-translate-y-1"
               >
                 <Mail className="w-8 h-8 text-blue-600 mb-3" />
                 <p className="font-medium text-gray-900 mb-1">Email</p>
-                <p className="text-gray-600 text-sm text-center">catherineboss27@gmail.com</p>
+                <p className="text-gray-600 text-sm text-center">jcb6560@psu.edu</p>
               </a>
               <a
                 href="https://linkedin.com/in/catherineboss"
@@ -1102,7 +1102,7 @@ function Portfolio() {
             <h3 className="text-2xl font-bold mb-4">Catherine Boss</h3>
             <p className="text-gray-400 mb-6">Mechanical Engineering Student | Problem Solver | Future Engineer</p>
             <div className="flex justify-center space-x-6">
-              <a href="mailto:catherineboss27@gmail.com" className="text-gray-400 hover:text-white transition-colors duration-200">
+              <a href="mailto:jcb6560@psu.edu" className="text-gray-400 hover:text-white transition-colors duration-200">
                 <Mail size={24} />
               </a>
               <a href="https://www.linkedin.com/in/catherine-boss-030207289/" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors duration-200">
